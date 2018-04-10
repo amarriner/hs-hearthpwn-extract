@@ -1,0 +1,5 @@
+DiffNormal: =IF(VLOOKUP($A2, Collection!$B$2:$Q, 6, FALSE) = $B2, "", "DIFF")
+DiffGold: =IF(VLOOKUP($A2, Collection!$B$2:$Q, 6, FALSE) = $B2, "", "DIFF")
+DiffCost: =IF(VLOOKUP($A2, Collection!$B$2:$R, 17, FALSE) = $D2, "", "DIFF")
+DiffRarity: =IF(VLOOKUP($A2, Collection!$B$2:$R, 2, FALSE) = $E2, "", "DIFF")
+DiffClass: =IF(VLOOKUP($A2, Collection!$B$2:$R, 5, FALSE) = $F2, "", "DIFF")
