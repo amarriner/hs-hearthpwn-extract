@@ -12,6 +12,7 @@
   "author": "Aaron Marriner <marrinea@strose.edu>",
   "license": "ISC",
   "dependencies": {
+    "image-downloader": "^3.4.2",
     "jssoup": "0.0.6",
     "sync-request": "^5.0.0"
   }

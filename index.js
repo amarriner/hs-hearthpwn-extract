@@ -1,5 +1,6 @@
 var JSSoup = require('jssoup').default;
 var fs = require('fs');
+var imageDownloader = require("image-downloader");
 
 var html = fs.readFileSync('collection.html', 'UTF-8');
 var cards = require('./cards.json');
@@ -28,6 +29,24 @@ var collection = {};
 for (i in tags) {
     if (tags[i].attrs.class && tags[i].attrs.class.indexOf('card-image-item') >= 0) {
         card = getCardByName(tags[i].attrs['data-card-name'].replace(/&#x27;/g, '\''));
+
+        var img = tags[i].find("img");
+        var options = {
+            url: img.attrs["data-src"],
+            dest: "images/" + card.dbfId + ".png"
+        };
+
+        if (!fs.existsSync(options.dest)) {
+
+            imageDownloader.image(options)
+                .then(( { filename, image} ) => {
+                    console.log("Downloaded " + filename);
+                })
+                .catch((error) => {
+                    console.log("Error downloading " + filename);
+                });
+
+        }
 
         var count;
         var spans = tags[i].findAll('span');
